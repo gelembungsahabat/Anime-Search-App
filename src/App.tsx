@@ -7,15 +7,21 @@ import type { AnimeList } from "./types/jikan-types";
 
 function App() {
   const [animeTitle, setAnimeTitle] = useState<string>("");
-
-  const { data, isLoading, mutate } = useSWR<AnimeList>(
+  const { data, isLoading, error, mutate } = useSWR<AnimeList>(
     `https://api.jikan.moe/v4/anime?q=${animeTitle}&limit=${5}`,
-    fetcher
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
+      revalidateOnMount: false,
+    }
   );
   const debounced = useDebouncedCallback((inputValue) => {
     setAnimeTitle(inputValue);
     mutate();
   }, 250); // 250ms is given interval from the YoPrint's rules
+
   return (
     <main>
       <section>
@@ -32,18 +38,20 @@ function App() {
             onChange={(e) => debounced(e.target.value)}
           />
           {isLoading && <p>loading...</p>}
+          {error?.message && <p className="text-red-800">{error?.message}</p>}
         </div>
       </section>
       <section>
-        <ul>
+        <div className="grid grid-cols-3 border-2 border-gray-400 rounded-3xl m-8">
           {data?.data.map((val, idx) => {
             return (
-              <li key={idx}>
-                {val.title} {val.synopsis}
-              </li>
+              <div key={idx} className="m-2">
+                <img src={`${val.images.jpg.image_url}`} alt="" />
+                <h3>{val.title}</h3> <p>{val.synopsis}</p>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </section>
     </main>
   );

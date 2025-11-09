@@ -2,6 +2,9 @@ export const fetcher = async <T>(
   ...args: Parameters<typeof fetch>
 ): Promise<T> => {
   const res = await fetch(...args);
-  if (!res.ok) throw new Error("Error from server");
+  if (!res.ok)
+    throw new Error(
+      "You are being rate-limited. Please follow Rate Limiting guidelines: https://docs.api.jikan.moe/#section/Information/Rate-Limiting"
+    );
   return res.json() as Promise<T>;
 };
