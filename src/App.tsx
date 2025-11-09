@@ -25,7 +25,7 @@ function App() {
   }, 250); // 250ms is given interval from the YoPrint's rules
 
   const prevPage = () => {
-    if (pagination > 0) {
+    if (pagination > 1) {
       setPagination((prev) => prev - 1);
     }
   };
