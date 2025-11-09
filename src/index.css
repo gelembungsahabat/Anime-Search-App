@@ -7,7 +7,7 @@
 
   color-scheme: light dark;
   color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  background-color: white;
   --bold: 600;
 
   font-synthesis: none;
@@ -35,14 +35,12 @@ body {
 
 h1 {
   margin: 1rem 0;
-  /* font-weight better from 600-700 for text that want to emphasize */
   font-weight: var(--bold);
   font-size: clamp(3.2rem, 2.5vw, 3.5rem);
 }
 
 h2 {
   opacity: 70%;
-  /* font-weight better from 400-500 for normal text */
   font-weight: 400;
   margin: 1rem 0;
   font-size: clamp(2rem, 2.5vw, 2.3rem);
@@ -50,10 +48,16 @@ h2 {
 
 h3 {
   opacity: 70%;
-  /* font-weight better from 400-500 for normal text */
-  font-weight: 400;
+  font-weight: 500;
   margin: 1rem 0;
   font-size: clamp(1rem, 2.5vw, 1.3rem);
+}
+
+h4 {
+  opacity: 70%;
+  font-weight: 500;
+  margin: 1rem 0;
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
 }
 
 button {
@@ -63,7 +67,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
+  border: black solid 1px;
   cursor: pointer;
   transition: border-color 0.25s;
 }
