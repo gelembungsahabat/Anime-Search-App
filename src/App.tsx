@@ -75,10 +75,12 @@ function App() {
             })}
           </div>
           {
-            <div className="flex flex-row justify-center">
-              <button onClick={prevPage}>previous page</button>{" "}
-              <p>{data?.pagination.current_page}</p> ...{" "}
-              <p>{data?.pagination.last_visible_page}</p>
+            <div className="flex flex-row gap-24 justify-center">
+              <button onClick={prevPage}>previous page</button>
+              <div className="flex flex-row justify-between items-center w-20">
+                <p>{data?.pagination.current_page}</p> ...
+                <p>{data?.pagination.last_visible_page}</p>
+              </div>
               <button onClick={nextPage}>next page</button>
             </div>
           }
