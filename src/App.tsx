@@ -42,7 +42,7 @@ function App() {
         </div>
       </section>
       <section>
-        <div className="grid grid-cols-3 border-2 border-gray-400 rounded-3xl m-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 border-2 border-gray-400 rounded-3xl m-8">
           {data?.data.map((val, idx) => {
             return (
               <div key={idx} className="m-2">
