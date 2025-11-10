@@ -83,12 +83,19 @@ export function AnimeList() {
           </div>
           {
             <div className="flex flex-row gap-24 justify-center">
-              <button onClick={prevPage}>previous page</button>
+              <button onClick={prevPage} disabled={pagination === 1}>
+                previous page
+              </button>
               <div className="flex flex-row justify-between items-center w-20">
                 <p>{data?.pagination.current_page}</p> ...
                 <p>{data?.pagination.last_visible_page}</p>
               </div>
-              <button onClick={nextPage}>next page</button>
+              <button
+                onClick={nextPage}
+                disabled={pagination === data?.pagination.last_visible_page}
+              >
+                next page
+              </button>
             </div>
           }
         </Activity>
