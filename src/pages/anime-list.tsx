@@ -6,9 +6,9 @@ import type { AnimeList } from "../types/jikan-types";
 import { Link } from "react-router-dom";
 
 export function AnimeList() {
+  const limit = 10;
   const [animeTitle, setAnimeTitle] = useState<string>("");
   const [pagination, setPagination] = useState<number>(1);
-  const limit = 10;
   const { data, isLoading, error, mutate } = useSWR<AnimeList>(
     `https://api.jikan.moe/v4/anime?q=${animeTitle}&limit=${limit}&page=${pagination}`,
     fetcher,
@@ -20,6 +20,7 @@ export function AnimeList() {
       keepPreviousData: true,
     }
   );
+
   const debounced = useDebouncedCallback((inputValue) => {
     setAnimeTitle(inputValue);
     mutate();
@@ -35,6 +36,9 @@ export function AnimeList() {
       setPagination((prev) => prev + 1);
     }
   };
+
+  const anime = data?.data;
+
   return (
     <main>
       <section>
@@ -59,7 +63,7 @@ export function AnimeList() {
       <section>
         <Activity mode={data ? "visible" : "hidden"}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 place-items-center border-2 border-gray-400 rounded-3xl m-8">
-            {data?.data.map((val, idx) => {
+            {anime?.map((val, idx) => {
               return (
                 <div
                   key={idx}

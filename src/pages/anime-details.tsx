@@ -5,7 +5,6 @@ import type { AnimeDetails } from "../types/jikan-types";
 
 export function AnimeDetails() {
   const { id } = useParams();
-  console.log(id);
   const { data, error, isLoading } = useSWR<AnimeDetails>(
     id ? `https://api.jikan.moe/v4/anime/${id}` : null,
     fetcher
@@ -13,7 +12,9 @@ export function AnimeDetails() {
 
   if (error) return <p>Error Loading Details..</p>;
   if (isLoading || !data) return <p>Loading ..</p>;
+
   const anime = data.data;
+
   return (
     <div>
       <Link to="/">Back to list</Link>
