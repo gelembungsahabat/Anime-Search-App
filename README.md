@@ -7,10 +7,11 @@ Make your anime search easier!
 - ReactJS + Typescript + Vite with SWC
 - react-router-dom
 - SWR
+- tailwindCSS
 - JikanAPI
 
 # Bonus Implementation
 
 - Mobile responsiveness
-- meaningful loading states
+- simple loading states
 - some UX implementation that makes live better :D
