@@ -29,11 +29,17 @@ export function AnimeList() {
   const prevPage = () => {
     if (pagination > 1) {
       setPagination((prev) => prev - 1);
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
     }
   };
   const nextPage = () => {
     if (data && pagination < data.pagination.last_visible_page) {
       setPagination((prev) => prev + 1);
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
     }
   };
 
@@ -44,6 +50,9 @@ export function AnimeList() {
       <section>
         <Activity mode={data ? "hidden" : "visible"}>
           <h1>Anime Search App</h1>
+        </Activity>
+        <Activity mode={data ? "visible" : "hidden"}>
+          <h2>Anime Search App</h2>
         </Activity>
         <div className="flex flex-col items-center gap-4">
           <label htmlFor="anime-search-input" className="flex-1 opacity-80">
