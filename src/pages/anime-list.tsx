@@ -31,7 +31,7 @@ export function AnimeList() {
       setPagination((prev) => prev - 1);
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 100);
+      }, 50);
     }
   };
   const nextPage = () => {
@@ -39,7 +39,7 @@ export function AnimeList() {
       setPagination((prev) => prev + 1);
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 100);
+      }, 50);
     }
   };
 
