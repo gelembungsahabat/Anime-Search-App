@@ -80,8 +80,8 @@ export function AnimeList() {
                 >
                   <Link to={`/details/${val.mal_id}`}>
                     <img
-                      src={`${val.images.jpg.image_url}`}
-                      alt="anime image"
+                      src={val.images.jpg.image_url}
+                      alt={val.title}
                       className="h-56 max-w-40"
                     />
                     <h4>{val.title}</h4>
