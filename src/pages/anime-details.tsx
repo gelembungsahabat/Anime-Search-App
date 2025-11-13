@@ -37,18 +37,16 @@ export function AnimeDetails() {
       </div>
 
       <h3>Anime Characters</h3>
-      <div className="grid grid-cols-10">
+      <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10">
         {charaData?.data.map((val, idx) => (
-          <>
-            <div>
-              <img
-                src={val.character.images.jpg.image_url}
-                alt={anime.title}
-                width={100}
-              />
-              <p key={idx}>{val.character.name}</p>
-            </div>
-          </>
+          <div className="flex flex-col justify-center items-center text-center gap-2">
+            <img
+              src={val.character.images.jpg.image_url}
+              alt={anime.title}
+              width={100}
+            />
+            <p key={idx}>{val.character.name}</p>
+          </div>
         ))}
       </div>
     </div>
