@@ -26,13 +26,12 @@ export function AnimeDetails() {
   return (
     <div>
       <Link to="/">Back to Search</Link>
-      <h1>{anime.title}</h1>
-      <div className="flex flex-row gap-10">
+      <h2>{anime.title}</h2>
+      <div className="flex flex-col md:flex-row gap-10">
         <img
-          className="object-cover"
+          className="object-cover md:h-[400px] h-auto w-full md:w-auto rounded-lg"
           src={anime.images.jpg.image_url}
           alt={anime.title}
-          height={400}
         />
         <p className="text-left">{anime.synopsis}</p>
       </div>
