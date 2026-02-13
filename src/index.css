@@ -76,10 +76,6 @@
 }
 
 /* ── Base resets ── */
-* {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
-}
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -169,19 +165,9 @@ input::placeholder {
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--text-muted);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+html {
+  scrollbar-color: var(--text-muted) var(--bg-secondary);
+  scrollbar-width: thin;
 }
 
 /* ── Skeleton animation ── */
