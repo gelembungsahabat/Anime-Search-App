@@ -176,7 +176,7 @@ export function AnimeDetails() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
               {infoItems.map(({ label, value }) => (
                 <div key={label} className="bg-[var(--bg-secondary)] rounded-lg p-3">
-                  <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] font-semibold mb-0.5">
+                  <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold mb-0.5">
                     {label}
                   </p>
                   <p className="text-sm font-medium text-[var(--text-primary)] m-0">{value}</p>
@@ -248,9 +248,9 @@ export function AnimeDetails() {
                       <p className="text-xs font-semibold text-[var(--text-primary)] m-0 line-clamp-1">
                         {c.character.name}
                       </p>
-                      <p className="text-[10px] text-[var(--accent)] font-medium m-0">{c.role}</p>
+                      <p className="text-xs text-[var(--accent)] font-medium m-0">{c.role}</p>
                       {japaneseVA && (
-                        <p className="text-[10px] text-[var(--text-muted)] m-0 mt-1 line-clamp-1">
+                        <p className="text-xs text-[var(--text-muted)] m-0 mt-1 line-clamp-1">
                           CV: {japaneseVA.person.name}
                         </p>
                       )}
@@ -278,7 +278,7 @@ export function AnimeDetails() {
                       className="w-14 h-14 rounded-full object-cover mb-1"
                       loading="lazy"
                     />
-                    <p className="text-[10px] font-medium text-[var(--text-secondary)] m-0 line-clamp-1">
+                    <p className="text-xs font-medium text-[var(--text-secondary)] m-0 line-clamp-1">
                       {c.character.name}
                     </p>
                   </div>
@@ -312,7 +312,7 @@ export function AnimeDetails() {
                   <h4 className="text-sm font-semibold line-clamp-2 text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors m-0">
                     {rec.entry.title}
                   </h4>
-                  <p className="text-[10px] text-[var(--text-muted)] mt-1 m-0">
+                  <p className="text-xs text-[var(--text-muted)] mt-1 m-0">
                     {rec.votes} {rec.votes === 1 ? "recommendation" : "recommendations"}
                   </p>
                 </div>

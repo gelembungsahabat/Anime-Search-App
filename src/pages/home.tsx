@@ -64,12 +64,13 @@ export function Home() {
           <CardGridSkeleton count={12} />
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-            {topData?.data.map((anime) => (
+            {topData?.data.map((anime, index) => (
               <AnimeCard
                 key={anime.mal_id}
                 anime={anime}
                 isFavorite={isFavorite(anime.mal_id)}
                 onToggleFavorite={toggleFavorite}
+                priority={index < 6}
               />
             ))}
           </div>

@@ -9,7 +9,8 @@ export function Layout() {
         Skip to content
       </a>
 
-      <nav aria-label="Main navigation" className="sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-nav)] border-b border-[var(--border-color)]">
+      <header className="fixed top-0 left-0 right-0 z-40">
+      <nav aria-label="Main navigation" className="bg-[var(--bg-nav)] border-b border-[var(--border-nav)] shadow-sm" style={{ backdropFilter: "saturate(180%) blur(20px)", WebkitBackdropFilter: "saturate(180%) blur(20px)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 text-[var(--text-primary)] hover:text-[var(--accent)] font-bold text-lg tracking-tight">
             <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -63,8 +64,9 @@ export function Layout() {
           </div>
         </div>
       </nav>
+      </header>
 
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 pt-16">
         <Outlet />
       </main>
 

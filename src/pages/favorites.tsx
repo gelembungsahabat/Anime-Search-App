@@ -48,19 +48,21 @@ export function Favorites() {
                 <img
                   src={anime.image_url}
                   alt={anime.title}
+                  width={225}
+                  height={300}
                   className="w-full aspect-[3/4] object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
                 {anime.score && (
                   <span className="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-white text-xs font-bold bg-[var(--score-green)]">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     {anime.score.toFixed(1)}
                   </span>
                 )}
                 {anime.type && (
-                  <span className="absolute top-2 right-2 px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-black/60 text-white backdrop-blur-sm">
+                  <span className="absolute top-2 right-2 px-2 py-0.5 text-xs font-bold uppercase rounded bg-black/70 text-white">
                     {anime.type}
                   </span>
                 )}
@@ -76,10 +78,10 @@ export function Favorites() {
 
               <button
                 onClick={() => removeFavorite(anime.mal_id)}
-                className="absolute bottom-2 right-2 p-1.5 rounded-full bg-[var(--bg-card)]/80 backdrop-blur-sm hover:bg-[var(--score-red)] hover:text-white transition-colors z-10"
-                aria-label="Remove from favorites"
+                className="absolute bottom-1 right-1 p-3 rounded-full bg-[var(--bg-card)]/90 hover:bg-[var(--score-red)] hover:text-white transition-colors z-10"
+                aria-label={`Remove ${anime.title} from favorites`}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--score-red)" stroke="var(--score-red)" strokeWidth="2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="var(--score-red)" stroke="var(--score-red)" strokeWidth="2">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
               </button>

@@ -6,9 +6,10 @@ interface AnimeCardProps {
   anime: AnimeData;
   isFavorite: boolean;
   onToggleFavorite: (fav: FavoriteAnime) => void;
+  priority?: boolean;
 }
 
-export function AnimeCard({ anime, isFavorite, onToggleFavorite }: AnimeCardProps) {
+export function AnimeCard({ anime, isFavorite, onToggleFavorite, priority = false }: AnimeCardProps) {
   const fav: FavoriteAnime = {
     mal_id: anime.mal_id,
     title: anime.title,
@@ -26,7 +27,8 @@ export function AnimeCard({ anime, isFavorite, onToggleFavorite }: AnimeCardProp
           width={225}
           height={300}
           className="w-full aspect-[3/4] object-cover transition-transform duration-300 group-hover:scale-105"
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -35,7 +37,7 @@ export function AnimeCard({ anime, isFavorite, onToggleFavorite }: AnimeCardProp
         </div>
 
         {anime.type && (
-          <span className="absolute top-2 right-2 px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-black/60 text-white backdrop-blur-sm">
+          <span className="absolute top-2 right-2 px-2 py-0.5 text-xs font-bold uppercase rounded bg-black/70 text-white">
             {anime.type}
           </span>
         )}
@@ -54,7 +56,7 @@ export function AnimeCard({ anime, isFavorite, onToggleFavorite }: AnimeCardProp
           </h4>
         </Link>
         {anime.genres.length > 0 && (
-          <p className="text-[11px] text-[var(--text-muted)] truncate">
+          <p className="text-xs text-[var(--text-muted)] truncate">
             {anime.genres.map((g) => g.name).join(", ")}
           </p>
         )}
@@ -65,7 +67,7 @@ export function AnimeCard({ anime, isFavorite, onToggleFavorite }: AnimeCardProp
           e.preventDefault();
           onToggleFavorite(fav);
         }}
-        className="absolute bottom-2 right-2 p-1.5 rounded-full bg-[var(--bg-card)]/80 backdrop-blur-sm hover:bg-[var(--bg-card-hover)] transition-colors z-10"
+        className="absolute bottom-1 right-1 p-3 rounded-full bg-[var(--bg-card)]/90 hover:bg-[var(--bg-card-hover)] transition-colors z-10"
         aria-label={isFavorite ? `Remove ${anime.title} from favorites` : `Add ${anime.title} to favorites`}
       >
         <svg
