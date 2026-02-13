@@ -13,8 +13,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-redux": "^9.2.0",
-    "react-router-dom": "^7.9.5",
+"react-router-dom": "^7.9.5",
     "swr": "^2.3.6",
     "tailwindcss": "^4.1.17",
     "use-debounce": "^10.0.6"
@@ -22,7 +21,7 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@types/node": "^24.6.0",
-    "@types/react": "^19.1.16",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react-swc": "^4.1.0",
     "eslint": "^9.36.0",
