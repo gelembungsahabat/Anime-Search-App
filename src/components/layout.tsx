@@ -5,10 +5,14 @@ import { ScrollToTop } from "./scroll-to-top";
 export function Layout() {
   return (
     <>
-      <nav className="sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-nav)] border-b border-[var(--border-color)]">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-white focus:rounded-lg">
+        Skip to content
+      </a>
+
+      <nav aria-label="Main navigation" className="sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-nav)] border-b border-[var(--border-color)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 text-[var(--text-primary)] hover:text-[var(--accent)] font-bold text-lg tracking-tight">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="23 7 16 12 23 17 23 7" />
               <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
             </svg>
@@ -60,7 +64,7 @@ export function Layout() {
         </div>
       </nav>
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Outlet />
       </main>
 

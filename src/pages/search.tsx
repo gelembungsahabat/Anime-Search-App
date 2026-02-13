@@ -102,8 +102,10 @@ export function Search() {
 
       {/* Search Input */}
       <div className="mb-6">
+        <label htmlFor="anime-search" className="sr-only">Search anime by title</label>
         <div className="relative">
           <svg
+            aria-hidden="true"
             className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)]"
             width="20"
             height="20"
@@ -118,7 +120,8 @@ export function Search() {
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
           <input
-            type="text"
+            id="anime-search"
+            type="search"
             className="w-full pl-12 pr-4 py-3 text-base rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]"
             placeholder="Search by title... e.g. Attack on Titan"
             onChange={(e) => debounced(e.target.value)}
@@ -127,8 +130,9 @@ export function Search() {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-3 mb-8">
+      <div className="flex flex-wrap gap-3 mb-8" role="group" aria-label="Search filters">
         <select
+          aria-label="Filter by type"
           value={filters.type}
           onChange={(e) => updateFilter("type", e.target.value)}
           className="rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] px-3 py-2 text-sm focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-light)]"
@@ -142,6 +146,7 @@ export function Search() {
         </select>
 
         <select
+          aria-label="Filter by status"
           value={filters.status}
           onChange={(e) => updateFilter("status", e.target.value)}
           className="rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] px-3 py-2 text-sm focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-light)]"
@@ -155,6 +160,7 @@ export function Search() {
         </select>
 
         <select
+          aria-label="Filter by rating"
           value={filters.rating}
           onChange={(e) => updateFilter("rating", e.target.value)}
           className="rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] px-3 py-2 text-sm focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-light)]"
@@ -168,6 +174,7 @@ export function Search() {
         </select>
 
         <select
+          aria-label="Sort order"
           value={filters.order_by}
           onChange={(e) => updateFilter("order_by", e.target.value)}
           className="rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] px-3 py-2 text-sm focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-light)]"
@@ -182,6 +189,7 @@ export function Search() {
 
         {filters.order_by && (
           <select
+            aria-label="Sort direction"
             value={filters.sort}
             onChange={(e) => updateFilter("sort", e.target.value)}
             className="rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] px-3 py-2 text-sm focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-light)]"
@@ -203,6 +211,7 @@ export function Search() {
       {!shouldFetch && !isLoading && (
         <div className="text-center py-20">
           <svg
+            aria-hidden="true"
             className="mx-auto mb-4 text-[var(--text-muted)]"
             width="64"
             height="64"
@@ -251,25 +260,28 @@ export function Search() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 mt-10">
+            <nav aria-label="Search results pagination" className="flex items-center justify-center gap-2 mt-10">
               <button
+                aria-label="Previous page"
                 onClick={() => goToPage(page - 1)}
                 disabled={page === 1}
                 className="px-3 py-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] text-sm hover:bg-[var(--bg-card-hover)] disabled:opacity-30"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
 
               {pageNumbers().map((p, i) =>
                 p === "..." ? (
-                  <span key={`dots-${i}`} className="px-2 text-[var(--text-muted)]">
+                  <span key={`dots-${i}`} className="px-2 text-[var(--text-muted)]" aria-hidden="true">
                     ...
                   </span>
                 ) : (
                   <button
                     key={p}
+                    aria-label={`Page ${p}`}
+                    aria-current={currentPage === p ? "page" : undefined}
                     onClick={() => goToPage(p as number)}
                     className={`w-10 h-10 rounded-lg text-sm font-medium ${
                       currentPage === p
@@ -283,15 +295,16 @@ export function Search() {
               )}
 
               <button
+                aria-label="Next page"
                 onClick={() => goToPage(page + 1)}
                 disabled={page >= totalPages}
                 className="px-3 py-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)] text-sm hover:bg-[var(--bg-card-hover)] disabled:opacity-30"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>
-            </div>
+            </nav>
           )}
         </>
       )}

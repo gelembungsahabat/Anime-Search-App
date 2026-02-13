@@ -81,7 +81,7 @@ export function AnimeDetails() {
           to="/search"
           className="inline-flex items-center gap-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="15 18 9 12 15 6" />
           </svg>
           Back to Search
@@ -96,6 +96,8 @@ export function AnimeDetails() {
             <img
               src={anime.images.jpg.large_image_url || anime.images.jpg.image_url}
               alt={anime.title}
+              width={288}
+              height={384}
               className="w-64 md:w-72 rounded-lg shadow-[var(--shadow-lg)]"
             />
             <button
@@ -107,6 +109,7 @@ export function AnimeDetails() {
               }`}
             >
               <svg
+                aria-hidden="true"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -237,6 +240,8 @@ export function AnimeDetails() {
                       <img
                         src={c.character.images.jpg.image_url}
                         alt={c.character.name}
+                        width={80}
+                        height={80}
                         className="w-20 h-20 rounded-full object-cover mb-2"
                         loading="lazy"
                       />
@@ -268,6 +273,8 @@ export function AnimeDetails() {
                     <img
                       src={c.character.images.jpg.image_url}
                       alt={c.character.name}
+                      width={56}
+                      height={56}
                       className="w-14 h-14 rounded-full object-cover mb-1"
                       loading="lazy"
                     />
@@ -296,6 +303,8 @@ export function AnimeDetails() {
                 <img
                   src={rec.entry.images.jpg.large_image_url || rec.entry.images.jpg.image_url}
                   alt={rec.entry.title}
+                  width={225}
+                  height={300}
                   className="w-full aspect-[3/4] object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />

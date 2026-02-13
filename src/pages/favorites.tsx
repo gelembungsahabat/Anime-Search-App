@@ -14,6 +14,7 @@ export function Favorites() {
       {favorites.length === 0 ? (
         <div className="text-center py-20">
           <svg
+            aria-hidden="true"
             className="mx-auto mb-4 text-[var(--text-muted)]"
             width="64"
             height="64"
